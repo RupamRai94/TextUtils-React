@@ -2,19 +2,40 @@ import React, {useState} from 'react'
 
 export default function TextForm(props) {
     const [text, setText] = useState('');
+    
     const handleUpClick = ()=>{
         // console.log("handleUpClick Fired");
         let newText = text.toUpperCase();
         setText(newText)
     }
+    
     const handleOnChange = (event)=>{
         // console.log("handleOnChange Fired");
         setText(event.target.value)
     }
+    
     const handleLoClick = ()=>{
         let newText = text.toLowerCase()
         setText(newText)
     }
+    
+    const handleSwapCaseClick = ()=>{
+        let newText = "";
+        for(let i = 0; i < text.length; i++){
+            if(text[i] == text[i].toLowerCase()){
+                newText += text[i].toUpperCase();
+                console.log(newText)
+            }else{
+                newText += text[i].toLowerCase();
+            }
+        }
+        setText(newText)
+    }
+
+    const handleClearClick = ()=>{
+        setText("")
+    }
+
   return (
     <>
         <div>
@@ -26,6 +47,8 @@ export default function TextForm(props) {
             </div>
             <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert to Uppercase</button>
             <button className="btn btn-primary mx-1" onClick={handleLoClick}>Convert to Lowercase</button>
+            <button className="btn btn-primary mx-1" onClick={handleSwapCaseClick}>SwapCase</button>
+            <button className="btn btn-primary mx-1" onClick={handleClearClick}>Clear</button>
         </div>
         <div className="container my-3">
             <h2>Your text summary</h2>

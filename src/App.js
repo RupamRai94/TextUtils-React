@@ -7,8 +7,7 @@ import TextForm from './components/TextForm';
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 function App() {
@@ -46,9 +45,9 @@ function App() {
         <Alert alert={alert}/>
         <div className="container my-3">
           <Routes> {/* Old version it should be <Switch> */}
-              <Route exact path='/about' element={<About/>}/>
+              <Route exact path='/about' element={<About mode={mode}/>}/>
               <Route exact path='/'
-                element={<TextForm showAlert={showAlert} heading = "Enter the text to analyze below" mode={mode}/>}
+                element={<TextForm showAlert={showAlert} heading = "Try TextUtils - Word Counter, Character Counter, Remove Extra Spaces" mode={mode}/>}
               />
           </Routes>
         </div>

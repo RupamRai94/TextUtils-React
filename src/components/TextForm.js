@@ -40,10 +40,8 @@ export default function TextForm(props) {
     }
 
     const handleCopyText = ()=>{
-        let text = document.getElementById("myBox");
-        text.select();
-        navigator.clipboard.writeText(text.value);
-        document.getSelection().removeAllRanges(); // used to remove selected highlight
+        navigator.clipboard.writeText(text);
+        // document.getSelection().removeAllRanges(); // used to remove selected highlight
         props.showAlert("Text has been copied!", "success")
     }
     
@@ -71,7 +69,8 @@ export default function TextForm(props) {
         </div>
         <div className="container my-3" style={{color : props.mode === 'dark' ? 'white' : '#042743'}}>
             <h2>Your text summary</h2>
-            <p>{text.split(" ").filter((element) => { return element.length !== 0 }).length} words and {text.length} characters</p>
+            {/* Used regular expression to split it by space and a new line */}
+            <p>{text.split(/\s+/).filter((element) => { return element.length !== 0 }).length} words and {text.length} characters</p>
             <p>{0.008 * text.split(" ").filter((element) => { return element.length !== 0 }).length} Minutes read</p>
             <h2>Preview</h2>
             <p>{text.length > 0 ? text : "Nothing to preview!"}</p>
